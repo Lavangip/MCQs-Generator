@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated MCQs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: rgb(22, 22, 22);
+            background-image: url('bg.png'); /* Replace with the actual path to your image */
+            background-size: cover;
+            background-position: center;
+            color: antiquewhite;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgb(31, 30, 30);
+            border: 1px solid palevioletred;
+            border-radius: 10px;
+            padding: 20px;
+            width: 700px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+        .card {
+            background-color: rgb(44, 44, 44);
+            border: 1px solid palevioletred;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+        .card-title {
+            color: palevioletred;
+        }
+        .form-check-input {
+            margin-right: 10px;
+        }
+        .correct-answer {
+            color: palevioletred;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Generated MCQs</h1>
+        <div id="mcqs-container">
+            {% for index, mcq in mcqs %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Q{{ index }}: {{ mcq[0] }}</h5>
+                    <form>
+                        {% for choice_index in range(4) %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="answer{{ index }}" id="choice{{ index }}{{ choice_index }}" value="{{ choice_index }}">
+                            <label class="form-check-label" for="choice{{ index }}{{ choice_index }}">
+                                {{ chr(65 + choice_index) }}: {{ mcq[1][choice_index] }}
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </form>
+                    <small class="text-muted">Correct Answer: {{ mcq[2] }}</small>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

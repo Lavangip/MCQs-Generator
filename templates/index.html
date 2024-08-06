@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(22, 22, 22);
+            background-size: cover;
+            background-position: center;
+            color: antiquewhite;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgb(31, 30, 30);
+            border: 1px solid palevioletred;
+            border-radius: 10px;
+            padding: 20px;
+            width: 700px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-control-file {
+            width: calc(100% - 82px);
+            margin-left: 10px;
+        }
+        label {
+            display: inline-block;
+            width: 70px;
+            vertical-align: top;
+        }
+        select {
+            width: 10%;
+            padding: 5px;
+            align-self: center;
+        }
+        h1, .lead {
+            text-align: center;
+        }
+        .mb-4 {
+            margin-bottom: 1.5rem;
+        }
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+        .btn-btn-primary {
+            background-color: palevioletred;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Generate MCQs</h1>
+        <p class="lead">This application generates multiple-choice questions based on the provided text. Upload either a txt or a pdf file</p>
+        <form method="post" action="/generate_mcqs" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Upload file(s)</label>
+                <input type="file" class="form-control-file" id="file" name="file[]" multiple> 
+            </div>
+            <div class="form-group">
+                <label for="num_ques">Number of questions</label>
+                <select name="num_ques" id="num_ques">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-btn-primary">Generate MCQ</button>
+        </form>
+    </div>
+</body>
+</html>
