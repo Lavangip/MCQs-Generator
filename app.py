@@ -48,10 +48,10 @@ def generate_mcqs(text, num_ques=5):
             # Replace subject with blank
             ques = sentence.replace(subject, "______")
 
-            # Collect distractors
-            distractors = list(set(nouns) - {subject})
+            # Collect distractors from the nouns, excluding the subject
+            distractors = [word for word in nouns if word != subject]
             if len(distractors) < 3:
-                distractors = distractors + ["[Distractor]"] * (3 - len(distractors))
+                distractors = distractors + random.sample(nouns, 3 - len(distractors))
 
             # Ensure we have 3 distractors
             random.shuffle(distractors)
